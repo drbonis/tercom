@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------
-                     TRANSLATION ERROR RATE (TER) 0.10.0
+                     TRANSLATION ERROR RATE (TER) 0.11.0
 
         Matthew Snover
         Shuguang Wang
@@ -40,6 +40,7 @@ Currently, the following options are supported:
    -P no punctuations, default is with punctuations.
    -A Asian language support for -N and -P, optional, default is without.
    -K remove brackets around HTML-style tags, optional, default is to keep
+   -L remove braces from values of the form {#} like {0}, {256}, optional, default is to keep
    -r reference file path, required.
    -h hypothesis file path, required.
    -o output formats, optional, default are all formats.

@@ -33,6 +33,7 @@ public class TerScorer {
   private boolean nopunct = false;
     private boolean asiansupport = false;
     private boolean notagbrackets = false;
+    private boolean noplaceholderbraces = false;
   private IntPair[] refSpans = null;
   private IntPair[] hypSpans = null;
   public double ref_len = -1.;
@@ -55,6 +56,10 @@ public class TerScorer {
 
     public void setTagBrackets(boolean b) {
 	notagbrackets = b;
+    }
+
+    public void setPlaceholderBraces(boolean b) {
+        noplaceholderbraces = b;
     }
 
   public void setBeamWidth(int i) {
@@ -218,7 +223,7 @@ public class TerScorer {
   }
 
   public String[] tokenize(String s) {
-      return Normalizer.tokenize(s, normalized, nopunct, asiansupport, notagbrackets);
+      return Normalizer.tokenize(s, normalized, nopunct, asiansupport, notagbrackets, noplaceholderbraces);
   }
     
   private Map<List<String>, Set<Integer>> BuildWordMatches(String[] hyp, 

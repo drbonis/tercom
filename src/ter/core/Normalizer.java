@@ -5,7 +5,7 @@ public class Normalizer {
     private static String asianPunct = "([\\x{3001}\\x{3002}\\x{3008}-\\x{3011}\\x{3014}-\\x{301f}\\x{ff61}-\\x{ff65}\\x{30fb}])";
     private static String fullwidthPunct = "([\\x{ff0e}\\x{ff0c}\\x{ff1f}\\x{ff1a}\\x{ff1b}\\x{ff01}\\x{ff02}\\x{ff08}\\x{ff09}])";
 
-    public static String[] tokenize(String s, boolean normalized, boolean nopunct, boolean asianSupport, boolean noTagBrackets) {
+    public static String[] tokenize(String s, boolean normalized, boolean nopunct, boolean asianSupport, boolean noTagBrackets, boolean noPlaceholderBraces) {
 
 	/* tokenizes according to the mtevalv11 specs, plus added material
 	   for handling languages written with CJK ideographs */
@@ -24,6 +24,11 @@ public class Normalizer {
 	    if(noTagBrackets) {
 		s = s.replaceAll("<([^<>]+)>", " $1 ");
 	    }
+
+	    // remove braces from values of the form {#} such as {0}, {256} : {6} -> 6
+		if (noPlaceholderBraces) {
+			s = s.replaceAll("\\{(\\d+)}", " $1 ");
+		}
 
 	    // language-dependent part (assuming Western languages):
 	    s = " " + s + " ";

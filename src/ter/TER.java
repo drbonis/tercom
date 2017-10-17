@@ -43,6 +43,8 @@ public class TER {
 	boolean asiansupport = (Boolean) val;
 	val = paras.get(Parameters.OPTIONS.NOTAGBRACKETS);
 	boolean notagbrackets = (Boolean) val;
+	val = paras.get(OPTIONS.NOPLACEHOLDERBRACES);
+	boolean noplaceholderbraces = (Boolean) val;
 	val = paras.get(Parameters.OPTIONS.OUTPFX);
 	String out_pfx;
 	if(val != null)
@@ -146,6 +148,7 @@ public class TER {
 	calc.setPunct(nopunct);
 	calc.setAsian(asiansupport);
 	calc.setTagBrackets(notagbrackets);
+	calc.setPlaceholderBraces(noplaceholderbraces);
 	calc.setBeamWidth(beam_width);
 	calc.setShiftDist(shift_dist);
 
